@@ -106,6 +106,7 @@ function showDetailCart(listCart) {
 
         </table>
     </div> `) }
+    cartTotal.innerHTML = localStorage.getItem('qty') ?? 0
 
             listProducts.innerHTML = productView(products)
 
@@ -160,7 +161,9 @@ function showDetailCart(listCart) {
             
                 products = newQty
                 cartInit++
-                cartTotal.innerHTML = cartInit
+                localStorage.setItem('qty',cartInit)
+                localStorage.setItem('list_product', JSON.stringify(products))
+                cartTotal.innerHTML = localStorage.getItem('qty')
                 listProducts.innerHTML = productView(products)
                 showDetailCart(listCart)
             }
